@@ -5,16 +5,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Routes
-const authRoutes = require('./routes/auth');
-const protectedRoutes = require('./routes/protected');
-
-app.use('/api/auth', authRoutes);
-app.use('/api', protectedRoutes);
-
-// Public route
 app.get('/api/hackathons', (req, res) => {
   res.json([{ name: 'Hackathon 1' }, { name: 'Hackathon 2' }]);
 });
+
+// const authRoutes = require('./routes/auth');
+// app.use('/api/auth', authRoutes);
 
 app.listen(5000, () => console.log('Server running on port 5000'));
